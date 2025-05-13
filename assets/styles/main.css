@@ -1,0 +1,12 @@
+/* assets/css/tailwind.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --direction: ltr;
+}
+
+[dir="rtl"] {
+  --direction: rtl;
+}

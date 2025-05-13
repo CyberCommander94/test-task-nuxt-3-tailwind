@@ -1,0 +1,16 @@
+{
+  "phoneCheck": "check your phone",
+  "phoneCheckText": "We've sent a six-digit confirmation code to +3 823 999 38 12",
+  "codeHint": "6-digit code",
+  "continue": "Continue",
+  "login": "login",
+  "takeTour": "Take the tour",
+  "readyToGo": "Ready to go!",
+  "readyToGoText": "Let's take a quick tour to your project",
+
+  "404": {
+    "title": "Page Not Found",
+    "description": "The page you are looking for doesn't exist or has been moved.",
+    "back_home": "Go back home"
+  }
+}
