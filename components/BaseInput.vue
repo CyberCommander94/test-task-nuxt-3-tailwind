@@ -1,9 +1,6 @@
 <template>
   <div class="relative flex flex-col items-start gap-1 w-full text-[14px]">
-    <label
-      v-if="hint"
-      class="w-full ltr:text-left rtl:text-right text-[12px] font-semibold uppercase"
-    >
+    <label v-if="hint" class="w-full ltr:text-left rtl:text-right text-[12px] font-semibold uppercase">
       {{ hint }}
     </label>
     <div class="relative w-full">
@@ -20,10 +17,7 @@
         :maxlength="maxLength"
         type="tel"
       />
-      <Check
-        v-if="isValid"
-        class="absolute top-[50%] translate-y-[-50%] ltr:right-3 rtl:left-3 text-green-500"
-      />
+      <Check v-if="isValid" class="absolute top-[50%] translate-y-[-50%] ltr:right-3 rtl:left-3 text-green-500" />
     </div>
   </div>
 </template>
@@ -57,23 +51,11 @@ const formatWithDashes = (digits: string): string => {
   return clean.split('').join('-')
 }
 
-const reverseString = (str: string) => str.split('').reverse().join('')
-
-const getFormattedDisplay = (digits: string): string => {
-  const clean = digits.replace(/\D/g, '').slice(0, segmentCount)
-  const value = isRtl.value ? reverseString(clean) : clean
-  return formatWithDashes(value)
-}
-
 watch(() => props.modelValue, (newVal) => {
-  const raw = newVal ?? ''
-  displayValue.value = getFormattedDisplay(raw)
+  if (newVal !== displayValue.value.replace(/-/g, '')) {
+    displayValue.value = formatWithDashes(newVal || '')
+  }
 }, { immediate: true })
-
-watch(isRtl, () => {
-  const raw = props.modelValue ?? displayValue.value.replace(/-/g, '')
-  displayValue.value = getFormattedDisplay(raw)
-})
 
 const isValid = computed(() => {
   return displayValue.value.replace(/-/g, '').length === segmentCount
@@ -83,15 +65,13 @@ const handleInput = (event: Event) => {
   const target = event.target as HTMLInputElement
   const raw = target.value
   const digits = raw.replace(/\D/g, '').slice(0, segmentCount)
-
-  const logicalValue = isRtl.value ? reverseString(digits) : digits
-  const formatted = getFormattedDisplay(logicalValue)
+  const formatted = formatWithDashes(digits)
 
   const cursorStart = target.selectionStart ?? formatted.length
   const prevValue = displayValue.value
 
   displayValue.value = formatted
-  emit('update:modelValue', logicalValue)
+  emit('update:modelValue', digits)
 
   nextTick(() => {
     if (!inputRef.value) return
@@ -118,14 +98,11 @@ const handlePaste = (event: ClipboardEvent) => {
   event.preventDefault()
   const pasteData = event.clipboardData?.getData('text/plain') || ''
   const cleaned = pasteData.replace(/\D/g, '').slice(0, segmentCount)
-  const logical = isRtl.value ? reverseString(cleaned) : cleaned
-  displayValue.value = getFormattedDisplay(logical)
-  emit('update:modelValue', logical)
+  displayValue.value = formatWithDashes(cleaned)
+  emit('update:modelValue', cleaned)
 }
 
 const handleBlur = () => {
-  const raw = displayValue.value.replace(/-/g, '')
-  const logical = isRtl.value ? reverseString(raw) : raw
-  displayValue.value = getFormattedDisplay(logical)
+  displayValue.value = formatWithDashes(displayValue.value.replace(/-/g, ''))
 }
 </script>
