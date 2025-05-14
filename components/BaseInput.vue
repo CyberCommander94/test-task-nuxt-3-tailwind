@@ -42,7 +42,6 @@ const { isRtl } = useLocale()
 const inputRef = ref<HTMLInputElement | null>(null)
 const displayValue = ref('')
 
-// Формат: X-X-X-X-X-X → 6 цифр + 5 дефисов = 11 символов
 const segmentLength = 1
 const segmentCount = 6
 const maxLength = computed(() => segmentLength * segmentCount + (segmentCount - 1)) // 11
