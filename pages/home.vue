@@ -7,8 +7,8 @@
         height="182"
         alt="Ready to go image"
       />
-      <p class="font-bold text-[30px] text-center">{{ t('readyToGo') }}</p>
-      <p class="font-bold text-[16px] text-center">{{ t('readyToGoText') }}</p>
+      <p class="font-nunito font-extrabold text-[30px] text-center">{{ t('readyToGo') }}</p>
+      <p class="font-nunito font-extrabold text-[16px] text-center">{{ t('readyToGoText') }}</p>
       <BaseButton class="mt-[24px]">{{ t('takeTour') }}</BaseButton>
     </div>
   </BasePopup>

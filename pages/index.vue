@@ -1,14 +1,14 @@
 <template>
   <div class="flex flex-col md:flex-row items-center justify-start h-full w-full">
     <div class="w-full h-full md:w-1/2 md:min-w-[50%] order-2 md:order-1 text-center pt-[60px] md:pt-0 px-4 flex md:flex-1 flex-col items-center md:justify-center gap-10">
-      <div class="flex flex-col gap-4 items-center text-black max-w-[343px] w-full">
+      <div class="flex flex-col gap-4 items-center text-black max-w-[310px] w-full">
         <img
           src="@/assets/images/logo.png"
           class="w-[73px] h-[64px] md:w-[90px] md:h-[78px]"
           alt="Ready to go image"
         />
         <h1 class="text-3xl font-black">{{ t('phoneCheck') }}</h1>
-        <p class="font-semibold">
+        <p class="font-semibold font-nunito">
           {{ t('phoneCheckText') }}
         </p>
       </div>

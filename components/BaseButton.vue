@@ -10,8 +10,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineEmits } from 'vue'
-
 const emit = defineEmits()
 
 const handleClick = (event: Event) => {

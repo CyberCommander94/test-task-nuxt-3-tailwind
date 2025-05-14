@@ -1,8 +1,9 @@
-import path from 'path'
+import { defineNuxtConfig } from 'nuxt/config'
+import svgLoader from 'vite-svg-loader'
 
 export default defineNuxtConfig({
   vite: {
-    plugins: [require('vite-svg-loader')()],
+    plugins: [svgLoader()],
   },
   modules: [
     '@nuxtjs/tailwindcss',
@@ -12,6 +13,7 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       Montserrat: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+      "Nunito Sans": [100, 200, 300, 400, 500, 600, 700, 800, 900],
     },
     display: 'swap',
   },
@@ -21,7 +23,7 @@ export default defineNuxtConfig({
   i18n: {
     strategy: 'no_prefix',
     defaultLocale: 'en',
-    langDir: path.resolve(__dirname, 'locales'),
+    langDir: '../i18n/locales',
     locales: [
       {
         code: 'en',
@@ -44,7 +46,7 @@ export default defineNuxtConfig({
       cookieKey: 'i18n_redirected',
       redirectOn: 'root'
     },
-    vueI18n: 'i18n.config.ts'
+    vueI18n: './i18n/i18n.config.ts'
   },
   tailwindcss: {
     config: {
@@ -66,6 +68,7 @@ export default defineNuxtConfig({
         extend: {
           fontFamily: {
             montserrat: ['Montserrat', 'sans-serif'],
+            nunito: ['"Nunito Sans"', 'sans-serif'],
           },
           colors: {
             white: '#ffffff',
@@ -73,10 +76,6 @@ export default defineNuxtConfig({
             primary: 'rgba(47, 0, 181, .8)',
             success: '#00d448',
           },
-          // screens: {
-          //   'ltr': {'raw': '(direction: ltr)'},
-          //   'rtl': {'raw': '(direction: rtl)'},
-          // },
         },
       },
     }
