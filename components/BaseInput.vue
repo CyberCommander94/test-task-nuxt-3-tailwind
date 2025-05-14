@@ -17,7 +17,7 @@
         :maxlength="maxLength"
         type="tel"
       />
-      <Check v-if="isValid" class="absolute top-[50%] translate-y-[-50%] ltr:right-1 rtl:left-1 text-green-500" />
+      <Check v-if="isValid" class="absolute top-[50%] translate-y-[-50%] ltr:right-3 rtl:left-3 text-green-500" />
     </div>
   </div>
 </template>
